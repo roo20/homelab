@@ -1,0 +1,51 @@
+crds:
+  keep: false
+configs:
+  params:
+    server.insecure: true
+  secret:
+    argocdServerAdminPassword: $2a$10$HxaIXNLLaylfJ/N0Ft5V1emTOp4W5im9sVRAEbLgxleF1lMsmBhVi
+
+  repositories:
+    argo:
+      url: https://argoproj.github.io/argo-helm
+      name: argo
+      type: helm
+    bitnami:
+      url: https://charts.bitnami.com/bitnami
+      name: bitnami
+      type: helm
+    external-dns:
+      url: https://kubernetes-sigs.github.io/external-dns
+      name: external-dns
+      type: helm
+    metallb:
+      url: https://metallb.github.io/metallb
+      name: metallb
+      type: helm
+    ingress-nginx:
+      url: https://kubernetes.github.io/ingress-nginx
+      name: ingress-nginx
+      type: helm
+    gitops-repo:
+      url: https://github.com/roo20/homelab
+server:
+  logFormat: text
+  logLevel: info
+  ingress:
+    enabled: true
+    hostname: argocd.qutaiba.de
+    path: /
+    annotations:
+      kubernetes.io/ingress.class: nginx
+      cert-manager.io/cluster-issuer: "cloudflare-issuer"
+      external-dns.alpha.kubernetes.io/hostname: argocd.qutaiba.de
+      external-dns.alpha.kubernetes.io/ttl: "60"
+      nginx.ingress.kubernetes.io/force-ssl-redirect: "false"
+      nginx.ingress.kubernetes.io/ssl-passthrough: "true"
+    tls: true
+    extraTls:
+    - hosts:
+        - argocd.qutaiba.de
+      secretName: argocd.server.local-tls
+    ingressClassName: "nginx"
