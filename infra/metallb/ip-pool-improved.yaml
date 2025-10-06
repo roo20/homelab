@@ -1,0 +1,35 @@
+---
+# MetalLB IP Address Pool Configuration
+# This defines the range of IP addresses that MetalLB can assign to LoadBalancer services
+apiVersion: metallb.io/v1beta1
+kind: IPAddressPool
+metadata:
+  name: homelab-pool
+  namespace: metallb-system
+  labels:
+    environment: homelab
+spec:
+  addresses:
+  - 10.0.0.90-10.0.0.93  # IP range for LoadBalancer services
+  autoAssign: true        # Automatically assign IPs from this pool
+  avoidBuggyIPs: true     # Avoid IPs ending in .0 and .255
+
+---
+# L2 Advertisement Configuration
+# This tells MetalLB to announce IPs using L2 (ARP) on specific nodes
+apiVersion: metallb.io/v1beta1
+kind: L2Advertisement
+metadata:
+  name: homelab-l2-adv
+  namespace: metallb-system
+  labels:
+    environment: homelab
+spec:
+  ipAddressPools:
+  - homelab-pool
+  # Node selector - only nodes with this label will announce IPs
+  nodeSelectors:
+  - matchLabels:
+      ingress-lb: "true"
+  # Optional: specify which interfaces to use (empty means all)
+  interfaces: []
