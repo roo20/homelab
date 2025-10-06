@@ -1,0 +1,9 @@
+controller:
+  ingressClassByName: true
+  ingressClassResource:
+    name: nginx
+    enabled: true
+    default: false
+  service:
+    externalTrafficPolicy: Cluster
+    loadBalancerIP: 10.0.0.90

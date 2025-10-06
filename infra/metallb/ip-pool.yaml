@@ -1,0 +1,21 @@
+---
+apiVersion: metallb.io/v1beta1
+kind: IPAddressPool
+metadata:
+  name: homelab-pool
+  namespace: metallb-system
+spec:
+  addresses:
+  - 10.0.0.90-10.0.0.93
+---
+apiVersion: metallb.io/v1beta1
+kind: L2Advertisement
+metadata:
+  name: homelab
+  namespace: metallb-system
+spec:
+  ipAddressPools:
+  - homelab-pool
+  nodeSelectors:
+  - matchLabels:
+      ingress-lb: "true"

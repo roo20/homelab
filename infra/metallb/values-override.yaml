@@ -1,0 +1,30 @@
+# MetalLB Configuration for L2 Mode (No BGP/FRR needed)
+# Override values for MetalLB helm chart
+
+speaker:
+  # Disable FRR since we're using L2 mode
+  frr:
+    enabled: false
+  
+  # Optional: Reduce resource usage since we don't need BGP features
+  resources:
+    requests:
+      cpu: 100m
+      memory: 100Mi
+    limits:
+      cpu: 200m
+      memory: 200Mi
+
+controller:
+  # Optional: Reduce controller resources  
+  resources:
+    requests:
+      cpu: 100m
+      memory: 100Mi
+    limits:
+      cpu: 200m
+      memory: 200Mi
+
+# Disable FRRk8s as well (alternative BGP backend)
+frrk8s:
+  enabled: false
