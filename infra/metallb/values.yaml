@@ -14,6 +14,15 @@ speaker:
     limits:
       cpu: 200m
       memory: 200Mi
+  
+  # Tolerations for control-plane and cloudprovider taints
+  tolerations:
+    - key: "node-role.kubernetes.io/control-plane"
+      operator: "Exists"
+      effect: "NoSchedule"
+    - key: "node.cloudprovider.kubernetes.io/uninitialized"
+      operator: "Exists"
+      effect: "NoSchedule"
 
 controller:
   # Optional: Reduce controller resources  
@@ -24,6 +33,15 @@ controller:
     limits:
       cpu: 200m
       memory: 200Mi
+  
+  # Tolerations for control-plane and cloudprovider taints
+  tolerations:
+    - key: "node-role.kubernetes.io/control-plane"
+      operator: "Exists"
+      effect: "NoSchedule"
+    - key: "node.cloudprovider.kubernetes.io/uninitialized"
+      operator: "Exists"
+      effect: "NoSchedule"
 
 # Disable FRRk8s as well (alternative BGP backend)
 frrk8s:

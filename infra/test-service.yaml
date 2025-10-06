@@ -42,7 +42,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-  - host: minio.hrdp.local
+  - host: test.qutaiba.local
     http:
       paths:
       - pathType: Prefix
