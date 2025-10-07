@@ -4,7 +4,7 @@
 speaker:
   # Disable FRR since we're using L2 mode
   frr:
-    enabled: false
+    enabled: true
   
   # Optional: Reduce resource usage since we don't need BGP features
   resources:
@@ -15,14 +15,7 @@ speaker:
       cpu: 200m
       memory: 200Mi
   
-  # Tolerations for control-plane and cloudprovider taints
-  tolerations:
-    - key: "node-role.kubernetes.io/control-plane"
-      operator: "Exists"
-      effect: "NoSchedule"
-    - key: "node.cloudprovider.kubernetes.io/uninitialized"
-      operator: "Exists"
-      effect: "NoSchedule"
+
 
 controller:
   # Optional: Reduce controller resources  
@@ -33,15 +26,7 @@ controller:
     limits:
       cpu: 200m
       memory: 200Mi
-  
-  # Tolerations for control-plane and cloudprovider taints
-  tolerations:
-    - key: "node-role.kubernetes.io/control-plane"
-      operator: "Exists"
-      effect: "NoSchedule"
-    - key: "node.cloudprovider.kubernetes.io/uninitialized"
-      operator: "Exists"
-      effect: "NoSchedule"
+
 
 # Disable FRRk8s as well (alternative BGP backend)
 frrk8s:

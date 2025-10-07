@@ -13,4 +13,4 @@ controller:
       enabled: false
   service:
     externalTrafficPolicy: Cluster
-    loadBalancerIP: 10.0.0.90
+    #loadBalancerIP: 10.0.0.90
