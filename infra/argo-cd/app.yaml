@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: argo-cd
+  namespace: argo-cd  
+spec:
+  project: default
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: argo-cd
+  sources:
+  - repoURL: https://argoproj.github.io/argo-helm
+    chart: argo-cd
+    targetRevision: 8.5.10 # Latest stable as of now
+    helm:
+      valueFiles:
+      - $values/infra/argo-cd/values.yaml
+  - repoURL: https://github.com/roo20/homelab.git
+    targetRevision: HEAD
+    ref: values
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
