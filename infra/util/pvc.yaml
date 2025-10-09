@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: qnap-media
+  namespace: default
+spec:
+  accessModes:
+    - ReadWriteMany
+  storageClassName: media-nfs
+  resources:
+    requests:
+      storage: 4000Gi

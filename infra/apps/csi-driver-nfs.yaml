@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: csi-driver-nfs
+  namespace: argo-cd  
+spec:
+  project: default
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: csi-driver-nfs
+  sources:
+  - repoURL: https://raw.githubusercontent.com/kubernetes-csi/csi-driver-nfs/master/charts
+    chart: csi-driver-nfs
+    targetRevision: 4.11.0 # Latest stable as of now
+    helm:
+      valueFiles:
+      - $values/infra/values/csi-driver-nfs.yaml
+  - repoURL: https://github.com/roo20/homelab.git
+    targetRevision: HEAD
+    ref: values
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
