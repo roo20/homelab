@@ -1,0 +1,11 @@
+
+
+crds:
+  enabled: true
+  
+prometheus:
+  enabled: true
+  servicemonitor:
+    enabled: false
+    labels: 
+      release: prometheus

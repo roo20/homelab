@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: cert-manager
+  namespace: argo-cd  
+spec:
+  project: default
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: cert-manager
+  sources:
+  - repoURL: https://charts.jetstack.io
+    chart: cert-manager
+    targetRevision: 1.19.0 # Latest stable as of now
+    helm:
+      valueFiles:
+      - $values/infra/values/cert-manager.yaml
+  - repoURL: https://github.com/roo20/homelab.git
+    targetRevision: HEAD
+    ref: values
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true

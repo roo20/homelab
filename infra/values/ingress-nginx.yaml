@@ -1,0 +1,16 @@
+controller:
+  ingressClassByName: true
+  ingressClassResource:
+    name: nginx
+    enabled: true
+    default: true
+  podAnnotations: #{}
+    prometheus.io/scrape: "true"
+    prometheus.io/port: "10254"
+  metrics:
+    enabled: true
+    serviceMonitor:
+      enabled: false
+  service:
+    externalTrafficPolicy: local
+    #loadBalancerIP: 10.0.0.90

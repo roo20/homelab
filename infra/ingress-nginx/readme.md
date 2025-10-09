@@ -1,1 +1,0 @@
-helm upgrade --install ingress-nginx ./infra/ingress-nginx/chart  --namespace ingress-nginx --create-namespace  --values ./infra/ingress-nginx/values.yaml
