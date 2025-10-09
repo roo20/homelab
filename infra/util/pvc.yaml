@@ -24,7 +24,7 @@ spec:
   accessModes:
     - ReadWriteMany
   persistentVolumeReclaimPolicy: Retain
-  storageClassName: qnap-nfs-csi
+  storageClassName: media-nfs
   mountOptions:
     - nfsvers=4
     - nolock
@@ -32,7 +32,7 @@ spec:
     driver: nfs.csi.k8s.io
     # volumeHandle format: {nfs-server-address}#{sub-dir-name}#{share-name}
     # make sure this value is unique for every share in the cluster
-    volumeHandle: 10.0.0.22#Media
+    volumeHandle: 10.0.0.22#Media#Media
     volumeAttributes:
       server: 10.0.0.22
       share: /Media
