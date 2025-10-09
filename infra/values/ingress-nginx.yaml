@@ -11,6 +11,6 @@ controller:
     enabled: true
     serviceMonitor:
       enabled: false
-  service:
-    externalTrafficPolicy: local
+  #service:
+    externalTrafficPolicy: Local
     #loadBalancerIP: 10.0.0.90
