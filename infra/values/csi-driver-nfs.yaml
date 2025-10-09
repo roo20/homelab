@@ -1,3 +1,5 @@
+storageClass:
+  create: true
 storageClasses:
   - name: qnap-nfs-csi
     annotations:
