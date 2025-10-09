@@ -1,7 +1,7 @@
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: argocd
+# apiVersion: v1
+# kind: Namespace
+# metadata:
+#   name: argocd
 ---
 # Source: argo-cd/templates/argocd-application-controller/serviceaccount.yaml
 apiVersion: v1
