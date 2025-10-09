@@ -11,7 +11,7 @@ spec:
     namespace: argo-cd
   project: default
   source:
-    path: infra/apps
+    path: ./infra/apps
     repoURL: https://github.com/roo20/homelab.git
     targetRevision: HEAD
   syncPolicy:
