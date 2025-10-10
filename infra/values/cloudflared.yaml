@@ -1,10 +1,18 @@
+replica:
+  allNodes: false
+  count: 1
+
+  
+
+
 tunnelSecrets:
   existingConfigJsonFileSecret:
     name: config-json-file-secret
   existingPemFileSecret:
     name: cert-pem-file-secret
 tunnelConfig:
-  name: k8s
+  name: "k8s"
+  logLevel: "debug"
 
 ingress:
   - hostname: dev.qutaiba.de
