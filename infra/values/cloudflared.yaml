@@ -7,8 +7,6 @@ securityContext:
   allowPrivilegeEscalation: true
 
 tunnelSecrets:
-  base64EncodedConfigJsonFile:
-  base64EncodedPemFile:
   existingConfigJsonFileSecret:
     name: config-json-file-secret
   existingPemFileSecret:
