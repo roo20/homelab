@@ -14,7 +14,7 @@ tunnelSecrets:
 
 
 tunnelConfig:
-  name: k8s
+  name: homelab
   logLevel: "debug"
   protocol: "auto"
   retries: 5
