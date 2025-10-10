@@ -12,3 +12,5 @@ ingress:
 
   # - hostname: dev-api.qutaiba.de
   #   service: http://dev-api-service.default.svc.cluster.local:8080
+
+  - service: http_status:404
