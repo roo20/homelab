@@ -3,16 +3,25 @@ replica:
   count: 1
 
   
-
+securityContext:
+  allowPrivilegeEscalation: true
 
 tunnelSecrets:
+  base64EncodedConfigJsonFile:
+  base64EncodedPemFile:
   existingConfigJsonFileSecret:
     name: config-json-file-secret
   existingPemFileSecret:
     name: cert-pem-file-secret
+
+
 tunnelConfig:
-  name: hoomelab-tunnel
+  name: k8s
   logLevel: "debug"
+  protocol: "auto"
+  retries: 5
+  connectTimeout: "30s"
+  gracePeriod: "30s"
 
 ingress:
   - hostname: dev.qutaiba.de
