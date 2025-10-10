@@ -14,7 +14,7 @@ spec:
     path: ./infra/manifests/cloudflare-operator/default
     repoURL: https://github.com/roo20/homelab.git
     targetRevision: HEAD
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
+  # syncPolicy:
+  #   automated:
+  #     prune: true
+  #     selfHeal: true
