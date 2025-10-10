@@ -5,3 +5,10 @@ tunnelSecrets:
     name: cert-pem-file-secret
 tunnelConfig:
   name: k8s
+
+ingress:
+  - hostname: dev.qutaiba.de
+    service: http://whoami.default.svc.cluster.local:80
+
+  # - hostname: dev-api.qutaiba.de
+  #   service: http://dev-api-service.default.svc.cluster.local:8080

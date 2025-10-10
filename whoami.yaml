@@ -1,16 +1,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: whoami-2
+  name: whoami
 spec:
   replicas: 4
   selector:
     matchLabels:
-      app: whoami-2
+      app: whoami
   template:
     metadata:
       labels:
-        app: whoami-2
+        app: whoami
     spec:
       containers:
         - name: whoami
@@ -25,23 +25,29 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: whoami-2  # Sample service, points to the same deployment
+  name: whoami  # Sample service, points to the same deployment
 spec:
   selector:
-    app: whoami-2
+    app: whoami
   ports:
     - port: 80
       targetPort: 80
 ---
-apiVersion: networking.cfargotunnel.com/v1alpha1
-kind: TunnelBinding
+apiVersion: networking.k8s.io/v1
+kind: Ingress
 metadata:
-  name: whoami-cluster-tunnel
-subjects:
-  - name: whoami-2  # Points to the second service
-    # spec:
-    #   fqdn: whoami.qutaiba.de
-tunnelRef:
-  kind: ClusterTunnel
-  name: cluster-tunnel
----
+  name: dev-whoami-ingress
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: dev.qutaiba.de
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: whoami
+            port: 
+              number: 80
+
