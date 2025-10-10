@@ -1,0 +1,7 @@
+tunnelSecrets:
+  existingConfigJsonFileSecret:
+    name: config-json-file-secret
+  existingPemFileSecret:
+    name: cert-pem-file-secret
+tunnelConfig:
+  name: k8s
