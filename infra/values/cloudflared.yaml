@@ -22,7 +22,7 @@ tunnelConfig:
   gracePeriod: "30s"
 
 ingress:
-  - hostname: dev.qutaiba.de
+  - hostname: bigus.qutaiba.de
     service: http://whoami.default.svc.cluster.local:80
 
   # - hostname: dev-api.qutaiba.de
