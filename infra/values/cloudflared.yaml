@@ -23,7 +23,7 @@ tunnelConfig:
 
 ingress:
   - hostname: bigus.qutaiba.de
-    service: http://whoami.default.svc.cluster.local:80
+    service: http://whoami.default
 
   - hostname: dev-api.qutaiba.de
     service: http://dev-api-service.default.svc.cluster.local:8080
