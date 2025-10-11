@@ -1,28 +1,28 @@
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: cloudflared
-  namespace: argo-cd  
-  finalizers:
-  - resources-finalizer.argocd.argoproj.io
-spec:
-  project: default
-  destination:
-    server: https://kubernetes.default.svc
-    namespace: cloudflared
-  sources:
-  - repoURL: https://community-charts.github.io/helm-charts
-    chart: cloudflared
-    targetRevision: 2.2.1 # Latest stable as of now
-    helm:
-      valueFiles:
-      - $values/infra/values/cloudflared.yaml
-  - repoURL: https://github.com/roo20/homelab.git
-    targetRevision: HEAD
-    ref: values
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
-    syncOptions:
-      - CreateNamespace=true
+# apiVersion: argoproj.io/v1alpha1
+# kind: Application
+# metadata:
+#   name: cloudflared
+#   namespace: argo-cd  
+#   finalizers:
+#   - resources-finalizer.argocd.argoproj.io
+# spec:
+#   project: default
+#   destination:
+#     server: https://kubernetes.default.svc
+#     namespace: cloudflared
+#   sources:
+#   - repoURL: https://community-charts.github.io/helm-charts
+#     chart: cloudflared
+#     targetRevision: 2.2.1 # Latest stable as of now
+#     helm:
+#       valueFiles:
+#       - $values/infra/values/cloudflared.yaml
+#   - repoURL: https://github.com/roo20/homelab.git
+#     targetRevision: HEAD
+#     ref: values
+#   syncPolicy:
+#     automated:
+#       prune: true
+#       selfHeal: true
+#     syncOptions:
+#       - CreateNamespace=true
