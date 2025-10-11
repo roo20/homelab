@@ -28,7 +28,7 @@ metadata:
   name: whoami  # Sample service, points to the same deployment
   annotations:
     external-dns.alpha.kubernetes.io/hostname: dev.qutaiba.de
-    #external-dns.alpha.kubernetes.io/ttl: "120" 
+    external-dns.alpha.kubernetes.io/ttl: "120" 
 spec:
   selector:
     app: whoami

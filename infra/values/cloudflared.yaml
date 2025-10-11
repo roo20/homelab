@@ -23,7 +23,7 @@ tunnelConfig:
 
 ingress:
   - hostname: dev.qutaiba.de
-    service: http://ingress-nginx-controller.ingress-nginx.svc.cluster.local:80
+    service: http://whoami.default.svc.cluster.local:80
 
   # - hostname: dev-api.qutaiba.de
   #   service: http://dev-api-service.default.svc.cluster.local:8080
