@@ -2,7 +2,7 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: couchdb-db-nfs
-  namespace: default
+  namespace: infrastructure
 spec:
   volumeName: couchdb-db-nfs
   accessModes:
