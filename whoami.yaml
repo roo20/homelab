@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: whoami
 spec:
-  replicas: 4
+  replicas: 1
   selector:
     matchLabels:
       app: whoami
@@ -41,9 +41,9 @@ kind: Ingress
 metadata:
   name: dev-whoami-ingress
 spec:
-  ingressClassName: nginx
+  ingressClassName: cloudflare-tunnel
   rules:
-  - host: dev.qutaiba.de
+  - host: bigus.qutaiba.de
     http:
       paths:
       - pathType: Prefix

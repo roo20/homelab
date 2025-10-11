@@ -1,28 +1,28 @@
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: cloudflare-tunnel
-  namespace: argo-cd  
-  finalizers:
-  - resources-finalizer.argocd.argoproj.io
-spec:
-  project: default
-  destination:
-    server: https://kubernetes.default.svc
-    namespace: cloudflare-tunnel
-  sources:
-  - repoURL: https://helm.strrl.dev
-    chart: cloudflare-tunnel-ingress-controller 
-    targetRevision: 0.0.18 # Latest stable as of now
-    helm:
-      valueFiles:
-      - $values/infra/values/cloudflare-tunnel.yaml
-  - repoURL: https://github.com/roo20/homelab.git
-    targetRevision: HEAD
-    ref: values
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
-    syncOptions:
-      - CreateNamespace=true
+# apiVersion: argoproj.io/v1alpha1
+# kind: Application
+# metadata:
+#   name: cloudflare-tunnel
+#   namespace: argo-cd  
+#   finalizers:
+#   - resources-finalizer.argocd.argoproj.io
+# spec:
+#   project: default
+#   destination:
+#     server: https://kubernetes.default.svc
+#     namespace: cloudflare-tunnel
+#   sources:
+#   - repoURL: https://helm.strrl.dev
+#     chart: cloudflare-tunnel-ingress-controller 
+#     targetRevision: 0.0.18 # Latest stable as of now
+#     helm:
+#       valueFiles:
+#       - $values/infra/values/cloudflare-tunnel.yaml
+#   - repoURL: https://github.com/roo20/homelab.git
+#     targetRevision: HEAD
+#     ref: values
+#   syncPolicy:
+#     automated:
+#       prune: true
+#       selfHeal: true
+#     syncOptions:
+#       - CreateNamespace=true
