@@ -1,0 +1,28 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: extenal-dns
+  namespace: argo-cd  
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: extenal-dns
+  sources:
+  - repoURL: https://kubernetes-sigs.github.io/external-dns
+    chart: extenal-dns
+    targetRevision: 1.19.0 # Latest stable as of now
+    helm:
+      valueFiles:
+      - $values/infra/values/extenal-dns.yaml
+  - repoURL: https://github.com/roo20/homelab.git
+    targetRevision: HEAD
+    ref: values
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
