@@ -23,15 +23,15 @@ persistentVolume:
       persistentVolumeName: couchdb-db-nfs
       volumeSource:
         csi:
+          storageClassName: ssd-docker-nfs
           driver: nfs.csi.k8s.io
           volumeHandle: 10.0.0.20#ssd#main#docker#database
           volumeAttributes:
             server: 10.0.0.20
             share: /mnt/ssd/main/docker/database
-          mountOptions:
-            - nfsvers=4
-            - nolock
-
+          # mountOptions:
+          #   - nfsvers=4
+          #   - nolock
   accessModes:
     - ReadWriteMany
   size: 4Gi
