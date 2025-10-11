@@ -1,0 +1,55 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: couchdb
+  namespace: infrastructure
+  labels:
+    app.kubernetes.io/name: couchdb
+    app.kubernetes.io/component: database
+spec:
+  serviceName: couchdb-headless
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: couchdb
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: couchdb
+        app.kubernetes.io/component: database
+    spec:
+      securityContext:
+        runAsUser: 1000
+        runAsGroup: 1000
+      containers:
+        - name: couchdb
+          image: couchdb:3.3
+          imagePullPolicy: IfNotPresent
+          envFrom:
+            - configMapRef:
+                name: couchdb-db-env
+          env:
+          - name: COUCHDB_USER
+            valueFrom:
+              secretKeyRef:
+                name: couchdb-external-secret
+                key: adminUsername
+          - name: COUCHDB_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: couchdb-external-secret
+                key: adminPassword
+          ports:
+            - containerPort: 5984
+              name: http
+          volumeMounts:
+            - name: couchdb-storage
+              mountPath: /opt/couchdb/data
+              subPath: couchdb/data
+            - name: couchdb-storage
+              mountPath: /opt/couchdb/etc/local.d
+              subPath: couchdb/etc
+      volumes:
+        - name: couchdb-storage
+          persistentVolumeClaim:
+            claimName: couchdb-db-nfs

@@ -1,0 +1,17 @@
+# apiVersion: networking.k8s.io/v1
+# kind: Ingress
+# metadata:
+#   name: couchdb-ingress
+# spec:
+#   ingressClassName: cloudflare-tunnel
+#   rules:
+#   - host: couchdb.example.com
+#     http:
+#       paths:
+#       - pathType: Prefix
+#         path: /
+#         backend:
+#           service:
+#             name: whoami
+#             port: 
+#               number: 80

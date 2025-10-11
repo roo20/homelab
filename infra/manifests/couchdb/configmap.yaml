@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: couchdb-db-env
+  namespace: infrastructure
+data:
+  PUID: "1000"
+  PGID: "1000"
+  TZ: Europe/Berlin
+---

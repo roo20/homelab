@@ -1,0 +1,29 @@
+# apiVersion: kustomize.config.k8s.io/v1beta1
+# kind: Kustomization
+
+# resources:
+#   - configmap.yaml
+#   - ingress.yaml
+#   - pvc-couchdb-infra.yaml
+#   - services.yaml
+#   - statefulset.yaml
+
+# configMapGenerator:
+#   - name: couchdb-domain
+#     literals:
+#       - host=couchdb.example.com
+
+# generatorOptions:
+#   disableNameSuffixHash: true
+
+# replacements:
+#   - source:
+#       kind: ConfigMap
+#       name: couchdb-domain
+#       fieldPath: data.host
+#     targets:
+#       - select:
+#           kind: Ingress
+#           name: couchdb-ingress
+#         fieldPaths:
+#           - spec.rules.[0].host
