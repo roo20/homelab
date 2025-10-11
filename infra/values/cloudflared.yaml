@@ -22,10 +22,10 @@ tunnelConfig:
   gracePeriod: "30s"
 
 ingress:
-  - hostname: bigus.qutaiba.de
-    service: http://whoami.default
+  - hostname: *.qutaiba.de
+    service: http://ingress-nginx-controller.ingress-nginx.svc.cluster.local:80
 
-  - hostname: dev-api.qutaiba.de
-    service: http://dev-api-service.default.svc.cluster.local:8080
+  # - hostname: dev-api.qutaiba.de
+  #   service: http://dev-api-service.default.svc.cluster.local:8080
 
   - service: http_status:404
