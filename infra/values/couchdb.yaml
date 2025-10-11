@@ -31,4 +31,5 @@ persistentVolume:
   accessModes:
     - ReadWriteMany
   size: 4Gi
+  storageClassName: ssd-docker-nfs
   #storageClass: "-"
