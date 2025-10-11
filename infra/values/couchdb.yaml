@@ -28,6 +28,10 @@ persistentVolume:
           volumeAttributes:
             server: 10.0.0.20
             share: /mnt/ssd/main/docker/database
+          mountOptions:
+            - nfsvers=4
+            - nolock
+
   accessModes:
     - ReadWriteMany
   size: 4Gi
