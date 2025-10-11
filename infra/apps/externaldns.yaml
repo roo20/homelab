@@ -11,9 +11,9 @@ spec:
     server: https://kubernetes.default.svc
     namespace: extenal-dns
   sources:
-  - repoURL: https://kubernetes-sigs.github.io/external-dns
+  - repoURL: https://kubernetes-sigs.github.io/external-dns/
     chart: extenal-dns
-    targetRevision: 1.18.0 # Latest stable as of now
+    targetRevision: 1.19.0 # Latest stable as of now
     helm:
       valueFiles:
       - $values/infra/values/extenal-dns.yaml
