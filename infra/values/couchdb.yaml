@@ -18,7 +18,10 @@ persistentVolume:
   enabled: true
   # NOTE: the number of existing claims must match the cluster size
   existingClaims: 
-  - couchdb-db-nfs
+    - volumeName: database-storage
+      claimName: couchdb-db-nfs
+      persistentVolumeName: couchdb-db-nfs
+
   accessModes:
     - ReadWriteMany
   size: 4Gi
