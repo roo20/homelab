@@ -5,8 +5,10 @@ adminUsernameKey: "adminUsername"
 adminPasswordKey: "adminPassword"
 
 clusterSize: 1
-
-
+couchdbConfig:
+  couchdb:
+    uuid: "b958e116-873d-46f6-a9f6-a4ba97ff0e94"
+    
 # -- The storage volume used by each Pod in the StatefulSet. If a
 # persistentVolume is not enabled, the Pods will use `emptyDir` ephemeral
 # local storage. Setting the storageClass attribute to "-" disables dynamic
