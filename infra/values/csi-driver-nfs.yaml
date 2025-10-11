@@ -22,4 +22,26 @@ storageClasses:
     mountOptions:
     - nfsvers=4
     - nolock
+  - name: ssd-docker-nfs
+    annotations:
+      storageclass.kubernetes.io/is-default-class: "false"
+    parameters:
+      server: 10.0.0.20
+      share: /ssd/main/docker
+    reclaimPolicy: Retain
+    volumeBindingMode: Immediate
+    mountOptions:
+    - nfsvers=4
+    - nolock
+  - name: ssd-k8s-nfs
+    annotations:
+      storageclass.kubernetes.io/is-default-class: "false"
+    parameters:
+      server: 10.0.0.20
+      share: /ssd/k8s
+    reclaimPolicy: Retain
+    volumeBindingMode: Immediate
+    mountOptions:
+    - nfsvers=4
+    - nolock
 
