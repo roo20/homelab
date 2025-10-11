@@ -1,7 +1,7 @@
 # apiVersion: argoproj.io/v1alpha1
 # kind: Application
 # metadata:
-#   name: cloudflared
+#   name: couchdb
 #   namespace: argo-cd  
 #   finalizers:
 #   - resources-finalizer.argocd.argoproj.io
@@ -9,14 +9,14 @@
 #   project: default
 #   destination:
 #     server: https://kubernetes.default.svc
-#     namespace: cloudflared
+#     namespace: infrastructure
 #   sources:
-#   - repoURL: https://community-charts.github.io/helm-charts
-#     chart: cloudflared
-#     targetRevision: 2.2.1 # Latest stable as of now
+#   - repoURL: https://apache.github.io/couchdb-helm
+#     chart: couchdb
+#     targetRevision: 4.6.2 # Latest stable as of now
 #     helm:
 #       valueFiles:
-#       - $values/infra/values/cloudflared.yaml
+#       - $values/infra/values/couchdb.yaml
 #   - repoURL: https://github.com/roo20/homelab.git
 #     targetRevision: HEAD
 #     ref: values

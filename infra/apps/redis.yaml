@@ -1,0 +1,28 @@
+# apiVersion: argoproj.io/v1alpha1
+# kind: Application
+# metadata:
+#   name: couchdb
+#   namespace: argo-cd  
+#   finalizers:
+#   - resources-finalizer.argocd.argoproj.io
+# spec:
+#   project: default
+#   destination:
+#     server: https://kubernetes.default.svc
+#     namespace: infrastructure
+#   sources:
+#   - repoURL: https://apache.github.io/couchdb-helm
+#     chart: couchdb
+#     targetRevision: 4.6.2 # Latest stable as of now
+#     helm:
+#       valueFiles:
+#       - $values/infra/values/couchdb.yaml
+#   - repoURL: https://github.com/roo20/homelab.git
+#     targetRevision: HEAD
+#     ref: values
+#   syncPolicy:
+#     automated:
+#       prune: true
+#       selfHeal: true
+#     syncOptions:
+#       - CreateNamespace=true
