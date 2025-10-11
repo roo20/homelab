@@ -1,0 +1,24 @@
+createAdminSecret: true
+# defaults to chart name
+extraSecretName: "couchdb-external-secret"
+adminUsernameKey: "adminUsername"
+adminPasswordKey: "adminPassword"
+
+clusterSize: 1
+
+
+# -- The storage volume used by each Pod in the StatefulSet. If a
+# persistentVolume is not enabled, the Pods will use `emptyDir` ephemeral
+# local storage. Setting the storageClass attribute to "-" disables dynamic
+# provisioning of Persistent Volumes; leaving it unset will invoke the default
+# provisioner.
+persistentVolume:
+  enabled: true
+  #storageClass: "longhorn"
+  # NOTE: the number of existing claims must match the cluster size
+  existingClaims: 
+  - dbs-nfs
+  accessModes:
+    - ReadWriteMany
+  size: 4Gi
+  storageClass: "-"

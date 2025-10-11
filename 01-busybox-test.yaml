@@ -26,6 +26,8 @@ spec:
         volumeMounts:
         - name: media
           mountPath: /mnt/media
+        - name: dbs
+          mountPath: /mnt/dbs
         resources:
           requests:
             memory: "64Mi"
@@ -37,6 +39,9 @@ spec:
       - name: media
         persistentVolumeClaim:
           claimName: qnap-media
+      - name: dbs
+        persistentVolumeClaim:
+          claimName: dbs-nfs
       restartPolicy: Always
 ---
 apiVersion: v1
