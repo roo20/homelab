@@ -14,11 +14,10 @@ clusterSize: 1
 # provisioner.
 persistentVolume:
   enabled: true
-  #storageClass: "longhorn"
   # NOTE: the number of existing claims must match the cluster size
   existingClaims: 
-  - dbs-nfs
+  - couchdb-db-nfs
   accessModes:
     - ReadWriteMany
   size: 4Gi
-  storageClass: "-"
+  #storageClass: "-"
