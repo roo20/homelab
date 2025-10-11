@@ -43,7 +43,7 @@ metadata:
 spec:
   ingressClassName: cloudflare-tunnel
   rules:
-  - host: bigus.qutaiba.de
+  - host: big.qutaiba.de
     http:
       paths:
       - pathType: Prefix
